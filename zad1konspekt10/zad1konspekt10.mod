@@ -17,7 +17,7 @@ int Js[S][J] = ...;
 device Tj[J][T] = ...;
 
 dvar int x[S][J] in 0..1;
-dvar int+ y[J][T]; //todo: should be plus?
+dvar float+ y[J][T]; //todo: should be plus?
 
 minimize
   sum(j in J) sum(t in T) Tj[j][t].cost * y[j][t];
