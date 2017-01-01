@@ -11,24 +11,22 @@ tuple device {
  
 {int} S = ...;
 {int} J = ...;
-{int} Js[S] = ...;
+int Js[S][J] = ...;
 {int} T = ...;
-{int} Tj[J] = ...;
 
-device devices[T] = ...;
+device Tj[J][T] = ...;
 
 dvar int x[S][J] in 0..1;
-dvar int y[J][T]; //todo: should be plus?
-//dvar int y[J][T] in 0..1; 
+dvar int+ y[J][T]; //todo: should be plus?
 
 minimize
-  sum(j in J) sum(t in Tj[j]) devices[t].cost * y[j][t];
+  sum(j in J) sum(t in T) Tj[j][t].cost * y[j][t];
   
   
 subject to
 	{
-	forall (s in S) sum(j in J) x[s][j] == 1;
-//	forall (j in J) sum (s in S: j in Js[s]) x[s][j] <= sum(t in Tj[j]) devices[t].number_of_clients*y[j][t];
-	forall (j in J) sum (s in S: j in Js[s]) x[s][j] <= sum(t in Tj[j]) devices[t].number_of_clients*y[j][t];
-	forall (j in J) sum(t in Tj[j]) y[j][t] <= 1;
+	forall (s in S) sum(j in J) Js[s][j]*x[s][j] == 1; //todo: if condition
+	//forall (j in J) sum (s in S) (Js[s][j]*x[s][j]) <= sum(t in T) (Tj[j][t].number_of_clients * y[j][t]);
+	forall (j in J) sum (s in S) (Js[s][j]*x[s][j]) <= sum(t in T) (Tj[j][t].number_of_clients * y[j][t]);
+	forall (j in J) sum(t in T) y[j][t] <= 1;
 	}
