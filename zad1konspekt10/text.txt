@@ -1,0 +1,33 @@
+y powinno byc {0,1}
+
+• podać znaczenie zmiennych xsj i yjt; 
+x - czy klient s uzywa wezla j
+y - czy w wezle j ma zostac zainstalowane urzadzenie typu t
+
+• zinterpretować znaczenie funkcji celu (1), ograniczeń równościowych (2) i ograniczeń nierównościowych (3)-(4); 
+funkcja kosztu - minimalizacja kosztu urzadzen. 1 dla urzadzen zainstalowanych. 
+ograniczenia:
+	kazdy klient musi miec jedno polaczenie z puli dostepnych dla niego Js
+	ilosc klientow podlaczonych do wezla j nie moze przekroczyc pojemnosci
+	y - zmienna binarna, maksymalnie jedno urzadzenie danego typu
+
+• opisać metodę, za pomocą której będzie można dokładnie rozwiązać ten problem optymalizacyjny; 
+
+• określić, czy i ewentualnie jak relaksacja liniowa ograniczenia (4) wpłynie na rozwiązanie optymalne; 
+relaksacja polegajaca na usunieciu warunku calkowitoliczbowosci:
+	wtedy najbardziej optymalnym rozwiazaniem bedzie wybor tego urzadzenia ktore ma najlepszy stosunek koszt/ilosc klientow. np. 2/3 gdy urzadzenie moze obsluzyc 3 klientow, a ma tylko 2. nieporzadane.
+
+relaksacja polegaja na usunieciu warunku <= 1 
+	wtedy bedzie mozliwe uzycie wiecej niz 1 urzadzenia w danej lokalizacji. taka relaksacja moze byc ewentualnie zaakceptowana.
+
+• zdualizować ograniczenia (3); 
+
+• stwierdzić, czy w znalezionej topologii wierzchołek reprezentujący wę- zeł pośredniczący może być liściem i jaki jest jego stopień; 
+	nie, lisciami moga byc tylko wezly koncowe
+
+• określić, który węzeł może być traktowany jako korzeń drzewa opisującego topologię takiej sieci dostępowej; 
+	wezel centralny
+
+• podać przykład konkretny
+	zbyt duza ilosc klientow - taka ktorej dostepne urzadzenia nie beda w stanie obsluzyc
+
